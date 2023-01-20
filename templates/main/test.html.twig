@@ -1,0 +1,36 @@
+
+{% extends 'base.html.twig' %}
+{%  block title %}Test {% endblock %}
+{% block body %}
+{% set age=30 %}
+{% if (age>=18) %}
+    {% set bonjour = "bonjour !" %}
+
+    {% set manale ={nom:"BOUTAYBI",prenom:"Manale",Age:23}%}
+    <div>La date d'aujourd'hui :{{ "now + 1 day" | date('d/m/Y') }}</div>
+    <h1>{{ bonjour | upper }} {{  manale.nom | length  }} {{ manale.prenom }}</h1>
+
+
+    <dl>
+        {% for key,val in manale %}
+            <dt>{{ key }} :</dt><dd>{{ val }}</dd>
+        {% endfor %}
+    </dl>
+
+    {% set table= [1,2,3,4] %}
+    <div>Nombre de case de tableaux : {{ table | length }}</div>
+    <br>
+    <div>éléments de tableaux : {{ table | join(',') }}</div>
+    <br>
+    {% for nombre in table %}
+        {# {% if (loop.index == 3) %} #}
+        <ul>
+            <li>{{ nombre }} </li>
+        </ul>
+        {#  {% endif %} #}
+
+    {% endfor %}
+{% else %}
+    <p>Vous etes encore majeur !</p>
+{% endif %}
+{% endblock %}
